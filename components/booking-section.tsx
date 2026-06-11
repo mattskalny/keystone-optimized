@@ -1,6 +1,6 @@
 'use client'
 
-import { CTA, SITE, URGENCY } from '@/lib/constants'
+import { SITE, URGENCY } from '@/lib/constants'
 import { SectionReveal } from './section-reveal'
 
 interface BookingSectionProps {
@@ -28,7 +28,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               onClick={onBookingClick}
               className="mt-8 w-full rounded-lg bg-emerald-500 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-[0.98] sm:w-auto"
             >
-              {CTA.label}
+              Book Your Free 15-Min Call
             </button>
 
             <p className="mt-4 text-sm text-amber-400/90">{URGENCY.audit}</p>

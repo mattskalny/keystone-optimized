@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Shield } from 'lucide-react'
-import { CTA, URGENCY } from '@/lib/constants'
+import { URGENCY } from '@/lib/constants'
 import { CredentialsStrip } from './credentials-strip'
 import { TaxCalculator } from './tax-calculator'
 
@@ -68,15 +68,14 @@ export function HeroSection({ onBookingClick }: HeroSectionProps) {
 
           <p className="mb-6 w-full text-pretty text-base leading-relaxed text-slate-300 lg:text-lg">
             Every week you wait costs deductions, increases audit risk, and shrinks your refund
-            window. Grand Rapids families, freelancers, and small businesses get a flat-rate plan in
-            one free 15-minute call.
+            window.
           </p>
 
           <button
             onClick={onBookingClick}
             className="w-full rounded-lg bg-emerald-500 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-[0.98] sm:w-auto"
           >
-            {CTA.label}
+            Book Your Free 15-Min Call
           </button>
 
           <p className="mt-4 text-sm text-amber-400/90">{URGENCY.deadline}</p>
