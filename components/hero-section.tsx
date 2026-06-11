@@ -37,8 +37,7 @@ export function HeroSection({ onBookingClick }: HeroSectionProps) {
           </div>
 
           <h1 className="mb-5 text-balance text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
-            Stop Overpaying the IRS —{' '}
-            <span className="text-emerald-400">Before an Audit or Notice Forces Your Hand</span>
+            The IRS Kept <span className="text-emerald-400">$3,200</span> That Belongs to You.
           </h1>
 
           <p className="mb-6 w-full text-pretty text-base leading-relaxed text-slate-300 lg:text-lg">

@@ -38,9 +38,11 @@ export function Navbar({ onBookingClick }: NavbarProps) {
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
           <a href="#" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500">
-              <span className="text-xl font-bold text-white">K</span>
-            </div>
+            <img
+              src="/logo-icon.png"
+              alt="Keystone Tax Advisory logo"
+              className="h-10 w-10 rounded-lg object-cover"
+            />
             <div className="hidden sm:block">
               <span className="text-lg font-semibold text-slate-50">Keystone</span>
               <span className="ml-1 text-lg font-light text-slate-400">Tax Advisory</span>
