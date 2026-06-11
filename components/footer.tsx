@@ -13,9 +13,11 @@ export function Footer({ onBookingClick }: FooterProps) {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500">
-                <span className="text-xl font-bold text-white">K</span>
-              </div>
+              <img
+                src="/logo-icon.png"
+                alt="Keystone Tax Advisory logo"
+                className="h-10 w-10 rounded-lg object-cover"
+              />
               <span className="text-lg font-semibold text-slate-50">Keystone Tax Advisory</span>
             </div>
             <p className="text-sm leading-relaxed text-slate-400">

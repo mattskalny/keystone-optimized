@@ -1,6 +1,6 @@
 'use client'
 
-import { CLIENT_PROOF, CTA, SITE, URGENCY } from '@/lib/constants'
+import { CTA, SITE, URGENCY } from '@/lib/constants'
 import { SectionReveal } from './section-reveal'
 
 interface BookingSectionProps {
@@ -17,14 +17,12 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               Free Consultation
             </p>
             <h2 className="text-3xl font-bold text-slate-50 lg:text-4xl">
-              Ready to Stop Overpaying?
+              The IRS Doesn&rsquo;t Wait. Neither Should You.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-slate-400">
-              Schedule your free 15-minute call. Flat-rate pricing — you decide after
-              we review your situation.
+              Grand Rapids families and businesses recover an average of $3,200 in missed
+              deductions. Your free 15-minute call takes less time than your morning coffee.
             </p>
-
-            <p className="mt-4 text-sm text-amber-400/90">{URGENCY.audit}</p>
 
             <button
               onClick={onBookingClick}
@@ -33,8 +31,7 @@ export function BookingSection({ onBookingClick }: BookingSectionProps) {
               {CTA.label}
             </button>
 
-            <p className="mt-4 text-sm text-slate-400">{CTA.micro}</p>
-            <p className="mt-3 text-sm text-slate-500">{CLIENT_PROOF}</p>
+            <p className="mt-4 text-sm text-amber-400/90">{URGENCY.audit}</p>
 
             <div className="mt-6 flex flex-col items-center gap-2 text-sm text-slate-400 sm:flex-row sm:justify-center sm:gap-6">
               <a href={SITE.phoneHref} className="hover:text-emerald-400">

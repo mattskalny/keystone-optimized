@@ -70,8 +70,6 @@ export function PricingSection({ onBookingClick }: PricingSectionProps) {
               </div>
             ))}
           </div>
-
-          <p className="mt-8 text-center text-sm text-slate-400">{CTA.micro}</p>
         </div>
       </section>
     </SectionReveal>

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { ClipboardCheck } from 'lucide-react'
-import { CTA, type FilingTypeId } from '@/lib/constants'
+import { type FilingTypeId } from '@/lib/constants'
 import { setPreselectedFilingType } from '@/lib/booking-store'
 import { SectionReveal } from './section-reveal'
 
@@ -16,31 +16,14 @@ export function TaxHealthCheck({ onBookingClick }: TaxHealthCheckProps) {
   const [irsNotices, setIrsNotices] = useState<boolean | null>(null)
 
   const allAnswered = selfEmployed !== null && missedDeductions !== null && irsNotices !== null
+  const anyYes = selfEmployed === true || missedDeductions === true || irsNotices === true
 
-  const { low, high, filingType } = useMemo(() => {
-    if (!allAnswered) return { low: 0, high: 0, filingType: 'personal' as FilingTypeId }
-
-    let low = 800
-    let high = 2000
+  const filingType = useMemo(() => {
     let type: FilingTypeId = 'personal'
-
-    if (selfEmployed) {
-      low += 1200
-      high += 3500
-      type = 'freelancer'
-    }
-    if (missedDeductions) {
-      low += 600
-      high += 2200
-    }
-    if (irsNotices) {
-      low += 1500
-      high += 5000
-      type = 'irs'
-    }
-
-    return { low, high, filingType: type }
-  }, [allAnswered, selfEmployed, missedDeductions, irsNotices])
+    if (selfEmployed) type = 'freelancer'
+    if (irsNotices) type = 'irs'
+    return type
+  }, [selfEmployed, irsNotices])
 
   const handleBook = () => {
     if (allAnswered) setPreselectedFilingType(filingType)
@@ -114,17 +97,24 @@ export function TaxHealthCheck({ onBookingClick }: TaxHealthCheckProps) {
 
           {allAnswered && (
             <div className="mt-6 rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-5 text-center">
-              <p className="text-slate-200">
-                Based on your answers, a consultation could save you{' '}
-                <span className="font-bold text-emerald-400">
-                  ${low.toLocaleString()}–${high.toLocaleString()}
-                </span>
-              </p>
+              {anyYes ? (
+                <p className="text-slate-200">
+                  Based on your answers, you likely qualify for a{' '}
+                  <span className="font-bold text-emerald-400">free tax audit review</span> — most
+                  clients in your situation recover{' '}
+                  <span className="font-bold text-emerald-400">$2,000–$4,000</span>.
+                </p>
+              ) : (
+                <p className="text-slate-200">
+                  Good news — you may still be leaving money on the table. A free 15-minute call
+                  costs nothing and could save you thousands.
+                </p>
+              )}
               <button
                 onClick={handleBook}
                 className="mt-4 w-full rounded-lg bg-emerald-500 px-6 py-3 font-semibold text-white transition-all hover:bg-emerald-600 active:scale-[0.98] sm:w-auto"
               >
-                {CTA.healthCheck}
+                Claim Your Free Audit Review →
               </button>
             </div>
           )}

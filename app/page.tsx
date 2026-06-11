@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Navbar } from '@/components/navbar'
 import { HeroSection } from '@/components/hero-section'
 import { EmailCaptureSection } from '@/components/email-capture-section'
-import { ClientOutcomeCard } from '@/components/client-outcome-card'
 import { TrustLogos } from '@/components/trust-logos'
 import { ServicesSection } from '@/components/services-section'
 import { YearRoundServicesSection } from '@/components/year-round-services-section'
@@ -31,7 +30,6 @@ export default function Home() {
       <main>
         <HeroSection onBookingClick={openBooking} />
         <EmailCaptureSection />
-        <ClientOutcomeCard />
         <TrustLogos />
         <ServicesSection />
         <YearRoundServicesSection onBookingClick={openBooking} />

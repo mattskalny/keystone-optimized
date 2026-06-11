@@ -1,12 +1,34 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { Shield } from 'lucide-react'
-import { CLIENT_PROOF, CTA, URGENCY } from '@/lib/constants'
+import { CTA, URGENCY } from '@/lib/constants'
 import { CredentialsStrip } from './credentials-strip'
 import { TaxCalculator } from './tax-calculator'
 
 interface HeroSectionProps {
   onBookingClick: () => void
+}
+
+function CountUpAmount({ target, durationMs }: { target: number; durationMs: number }) {
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    let frame: number
+    const start = performance.now()
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / durationMs, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setValue(Math.round(target * eased))
+      if (progress < 1) frame = requestAnimationFrame(tick)
+    }
+
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [target, durationMs])
+
+  return <>${value.toLocaleString()}</>
 }
 
 export function HeroSection({ onBookingClick }: HeroSectionProps) {
@@ -37,7 +59,11 @@ export function HeroSection({ onBookingClick }: HeroSectionProps) {
           </div>
 
           <h1 className="mb-5 text-balance text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
-            The IRS Kept <span className="text-emerald-400">$3,200</span> That Belongs to You.
+            The IRS Kept{' '}
+            <span className="inline-block min-w-[3.2ch] text-emerald-400">
+              <CountUpAmount target={3200} durationMs={2500} />
+            </span>{' '}
+            That Belongs to You.
           </h1>
 
           <p className="mb-6 w-full text-pretty text-base leading-relaxed text-slate-300 lg:text-lg">
@@ -46,8 +72,6 @@ export function HeroSection({ onBookingClick }: HeroSectionProps) {
             one free 15-minute call.
           </p>
 
-          <p className="mb-5 text-sm text-amber-400/90">{URGENCY.deadline}</p>
-
           <button
             onClick={onBookingClick}
             className="w-full rounded-lg bg-emerald-500 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-[0.98] sm:w-auto"
@@ -55,15 +79,10 @@ export function HeroSection({ onBookingClick }: HeroSectionProps) {
             {CTA.label}
           </button>
 
-          <p className="mt-4 hidden text-sm text-slate-500 sm:block">
-            {CLIENT_PROOF}{' '}
-            <a href="#testimonials" className="text-emerald-400 underline-offset-2 hover:underline">
-              Read reviews →
-            </a>
-          </p>
+          <p className="mt-4 text-sm text-amber-400/90">{URGENCY.deadline}</p>
 
           <div className="mt-6 lg:hidden">
-            <CredentialsStrip compact showEaExplanation />
+            <CredentialsStrip compact />
           </div>
         </div>
 
@@ -74,7 +93,7 @@ export function HeroSection({ onBookingClick }: HeroSectionProps) {
       </div>
 
       <div className="relative hidden lg:block">
-        <CredentialsStrip showEaExplanation />
+        <CredentialsStrip />
       </div>
     </section>
   )
