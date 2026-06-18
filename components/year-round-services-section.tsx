@@ -11,25 +11,22 @@ const YEAR_ROUND_SERVICES = [
   {
     icon: CalendarClock,
     title: 'Quarterly Tax Estimates',
-    description:
-      'Miss a quarterly payment and the IRS charges penalties automatically. We keep you ahead of it.',
+    description: 'Missed payments trigger automatic IRS penalties. We keep you ahead of every deadline.',
   },
   {
     icon: BookOpen,
     title: 'Monthly Bookkeeping',
-    description:
-      'Disorganized books cost the average small business $3,200 in missed deductions. We fix that every month.',
+    description: 'Disorganized books cost deductions every month. We close that gap on a regular cycle.',
   },
   {
     icon: Briefcase,
     title: 'Business Accounting',
-    description:
-      "LLCs and S-Corps have tax advantages most owners never claim. We make sure you're not leaving money behind.",
+    description: 'Most LLC and S-Corp owners never claim all their advantages. We make sure you do.',
   },
   {
     icon: Users,
     title: 'Payroll Services',
-    description: 'Payroll mistakes trigger IRS audits. We handle it correctly every time.',
+    description: 'Payroll errors trigger audits. We handle it correctly, every time.',
   },
 ]
 
@@ -43,30 +40,28 @@ export function YearRoundServicesSection({ onBookingClick }: YearRoundServicesSe
               Year-Round Services
             </p>
             <h2 className="text-balance text-3xl font-bold text-slate-50 lg:text-4xl">
-              Your Tax Bill Is Being Decided Right Now — Not in April
+              Your Tax Bill Is Decided Every Month — Not in April
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-              Every month you wait costs deductions. Most Grand Rapids businesses overpay because
-              they only talk to their accountant once a year.
-            </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px rounded-2xl border border-white/10 bg-white/10 overflow-hidden sm:grid-cols-2">
             {YEAR_ROUND_SERVICES.map((service) => {
               const Icon = service.icon
               return (
                 <div
                   key={service.title}
-                  className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-all hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5"
+                  className="flex flex-col gap-3 bg-slate-900 p-7 transition-colors hover:bg-slate-800/60"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-500/10">
-                    <Icon className="h-6 w-6 text-emerald-400" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
+                    <Icon className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-50">{service.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-400">{service.description}</p>
+                  <div>
+                    <h3 className="mb-1 text-base font-semibold text-slate-50">{service.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-400">{service.description}</p>
+                  </div>
                   <button
                     onClick={onBookingClick}
-                    className="mt-4 self-start pt-2 text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300"
+                    className="self-start text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300"
                   >
                     Book Free Call →
                   </button>

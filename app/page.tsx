@@ -11,6 +11,7 @@ import { PricingSection } from '@/components/pricing-section'
 import { CaseStudiesSection } from '@/components/case-studies-section'
 import { TestimonialsSection } from '@/components/testimonials-section'
 import { TaxHealthCheck } from '@/components/tax-health-check'
+import { SavingsCalculatorSection } from '@/components/savings-calculator-section'
 import { FAQSection } from '@/components/faq-section'
 import { BookingSection } from '@/components/booking-section'
 import { Footer } from '@/components/footer'
@@ -31,6 +32,7 @@ export default function Home() {
         <HeroSection onBookingClick={openBooking} />
         <EmailCaptureSection />
         <TrustLogos />
+        <SavingsCalculatorSection onBookingClick={openBooking} />
         <ServicesSection />
         <YearRoundServicesSection onBookingClick={openBooking} />
         <PricingSection onBookingClick={openBooking} />
