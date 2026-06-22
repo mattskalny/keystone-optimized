@@ -32,8 +32,8 @@ export default function Home() {
         <HeroSection onBookingClick={openBooking} />
         <EmailCaptureSection />
         <TrustLogos />
-        <SavingsCalculatorSection onBookingClick={openBooking} />
         <ServicesSection />
+        <SavingsCalculatorSection onBookingClick={openBooking} />
         <YearRoundServicesSection onBookingClick={openBooking} />
         <PricingSection onBookingClick={openBooking} />
         <CaseStudiesSection onBookingClick={openBooking} />
